@@ -1,0 +1,97 @@
+﻿v0.8 LOCAL EVIDENCE — 2026-10-11
+Game root: C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2
+Risk of Rain 2_Data\StreamingAssets\Language\en\Items.json:
+ITEM_HOOF_DESC, ITEM_SYRINGE_DESC, ITEM_CRITGLASSES_DESC, ITEM_FEATHER_DESC,
+ITEM_CHAINLIGHTNING_DESC, ITEM_SECONDARYSKILLMAGAZINE_DESC,
+ITEM_ALIENHEAD_DESC, ITEM_UTILITYSKILLMAGAZINE_DESC, ITEM_BEAR_DESC,
+ITEM_CRITGLASSESVOID_DESC, ITEM_BEARVOID_DESC and corruption rules.
+CharacterBodies.json: HUNTRESS_PRIMARY_ALT_DESCRIPTION (3 arrows, 6 on crit),
+BANDIT2_PASSIVE_DESCRIPTION (back attacks crit), RAILGUNNER_PASSIVE_DESCRIPTION.
+RoR2.dll metadata inspected: GenericSkill, SkillDef, Inventory effective counts,
+RunArtifactManager, RoR2Content.Artifacts.Command, ItemTier, MPEventSystem,
+RoR2Application.loadFinished. Strongly typed access compiles against installed
+game DLLs. Item IDs/tiers and run availability are checked again at runtime.
+
+Quantitative predictions are restricted models; descriptions alone do not prove
+all stacking formulas. Bear block chance and final Alien Head cooldowns are not
+calculated. Priorities and repeat-stack penalties are advisor heuristics.
+The old bibliography below is retained as historical background, not new evidence.
+
+v0.8.2 EQUIPMENT EVIDENCE
+Installed Equipment.json tokens: COMMANDMISSILE, FRUIT, BLACKHOLE, LIGHTNING,
+SCANNER, GAINARMOR and RECYCLER. Values displayed in recommendation reasons are
+copied from those installed descriptions. RoR2.dll metadata confirms EquipmentDef,
+EquipmentCatalog, Inventory.currentEquipmentIndex and Run.availableEquipment.
+Runtime gates every rule on a matching EquipmentDef, canDrop, non-Lunar/non-Boss
+and membership in the current run's availableEquipment collection.
+The ranking by play style is an advisor heuristic. It is not a drop probability.
+
+v0.9.0 LOCAL API / CATALOG EVIDENCE
+Steam appmanifest build ID: 25475991. Risk of Rain 2 executable product runtime:
+Unity 2021.3.45f2. BepInEx assembly: 5.4.21.0. Installed language catalog contains
+DLC1.json through DLC4.json. Previous live catalog diagnostics recorded 14 Hex
+items and 47 Hallowed Concepts browser entries.
+
+RoR2.dll public metadata inspected locally before implementation:
+- InstanceTracker.GetInstancesList<T>()
+- ShopTerminalBehavior.CurrentPickup(), Networkhidden,
+  NetworkhasBeenPurchased and pickupIndexIsHidden
+- GenericPickupController.pickup
+- PickupCatalog.GetPickupDef(), PickupDef.itemIndex/equipmentIndex/itemTier/GetIcon()
+- NetworkUser.readOnlyInstancesList/GetCurrentBody and visible Inventory objects
+
+NearbyLootReader only reads these client-side objects. A revealed pickup proves
+availability at that position; it does not prove affordability, ownership priority
+or future drops. Hallowed tier names prove catalog grouping, not item formulas.
+
+
+HISTORICAL NOTES
+Проверенные базовые механики Risk of Rain 2 (проверены по riskofrain2.wiki.gg, 2026-10-11)
+Hoof (+14% скорости за стак): https://riskofrain2.wiki.gg/wiki/Paul%27s_Goat_Hoof
+Bear (гиперболический блок): https://riskofrain2.wiki.gg/wiki/Tougher_Times
+Syringe (+15% скорости атаки за стак): https://riskofrain2.wiki.gg/wiki/Syringe
+CritGlasses (+10 п.п. шанса крита за стак): https://riskofrain2.wiki.gg/wiki/Glasses
+Feather (+1 дополнительный прыжок за стак): https://riskofrain2.wiki.gg/wiki/Hopoo_Feather
+ChainLightning (25% при proc coeff 1, до 3 целей): https://riskofrain2.wiki.gg/wiki/Ukulele
+BearVoid (блок + восстановление): https://riskofrain2.wiki.gg/wiki/Safer_Spaces
+CritGlassesVoid (коррупция Lens-Maker's Glasses): https://riskofrain2.wiki.gg/wiki/Lost_Seer%27s_Lenses
+ChainLightningVoid (коррупция Ukulele): https://riskofrain2.wiki.gg/wiki/Polylute
+Railgunner (крит-шанс преобразуется в крит-урон): https://riskofrain2.wiki.gg/wiki/Railgunner
+
+Алгоритм приоритетов и целевые количества стаков — эвристики данного MVP. Они не заявлены как игровые формулы или универсальные оптимальные билды.
+
+Run and multiplayer mechanics:
+Run.stageClearCount, Run.participatingPlayerCount, GetRunStopwatch():
+https://old.thunderstore.io/package/LordVGames/ConfigurablePerPlayerScaling/source/
+https://old.thunderstore.io/package/Puporongod/EclipseRefurbished/source/
+NetworkUser.readOnlyInstancesList, GetCurrentBody:
+https://risk-of-thunder.github.io/R2Wiki/Mod-Creation/C%23-Programming/Game-Code/Common-Components%2C-Events-and-Methods/
+Interactable Scene Director credits (+50% per additional player):
+https://riskofrain2.wiki.gg/wiki/Director
+Risk difficulty changes with players, elapsed time and cleared stages:
+https://riskofrain2.wiki.gg/wiki/Difficulty
+
+Party share and item-coverage signals in v0.7 are EXPLANATORY / HEURISTIC.
+They do not claim actual chest counts, available loot or measured damage.
+
+v0.9.1 LOCAL DLC / SURVIVABILITY EVIDENCE
+Installed DLC4 language descriptions and compiled DLC4Content.Items fields were
+used for RechargeableJump, BlightZone, SprintDamage, GhostBlades, CausticPheromones,
+DreamDemon, SanguineChalice, VengefulSpirit, LowHealthOrbSpawner, GoldenGoose and
+VileCenser. Their scores and goals are advisor heuristics; catalog validation at
+startup confirms IDs and tiers, while gameplay-specific interactions remain
+subject to TESTING.md. The 14 Hex catalog entries are visible but never ranked.
+
+RoR2.dll public metadata inspected and compiled locally:
+- PickupPickerController.options and option.pickup.pickupIndex
+- PurchaseInteraction.cost and costType
+- RunArtifactManager.instance.IsArtifactEnabled and ArtifactCatalog
+- CharacterBody armor, regen, hasOneShotProtection, oneShotProtectionFraction,
+  barrierDecayRate, cursePenalty and GetBuffCount
+- HealthComponent.fullCombinedHealth; BuffCatalog and BuffDef.isDebuff
+
+Armor EHP uses the standard positive/negative armor multiplier in
+StatCalculator. It is labelled conditional because special damage can bypass or
+modify this path. OSP is reported from the live body rather than inferred.
+Seeker/Sojourn and Acolyte routes use installed DLC descriptions as hypotheses;
+they are opt-in and do not claim runtime-verified synergy.

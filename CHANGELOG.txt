@@ -1,0 +1,183 @@
+0.14.3 (2026-10-22)
+- Лежащий лут обновляется каждые 0,30 с даже без Alt; тяжёлый поиск окон выбора отделён и выполняется реже.
+- Жёлтые награды читаются и во время полёта, и после приземления; реально видимый hidden-предмет больше не отбрасывается.
+- Иконка текущей цели загружается первой, временные ошибки Addressables повторяются через 2 с.
+- Убрана массовая одновременная загрузка иконок всего каталога; остальные догружаются маленькими порциями.
+- What-if для найденного предмета кэшируется до изменения билда, поэтому быстрый скан не создаёт микрофризы.
+
+0.14.2 (2026-10-12)
+- Добавлен включённый по умолчанию экономный режим.
+- Полный каталог и рекомендации перестраиваются только при изменении инвентаря, уровня, этапа, режима или контекста боя.
+- Инвентарь опрашивается раз в 2 секунды, навыки — раз в 5 секунд.
+- Команда, угрозы, лут и телеметрия урона активируются только при просмотре нужной вкладки с Alt.
+- При открытии тяжёлой вкладки её данные обновляются сразу.
+
+0.14.1 (2026-10-12)
+- Сильно снижена нагрузка: what-if считается только для 12 лучших и реально найденных рядом предметов.
+- Командный анализ больше не симулирует весь каталог для каждого игрока.
+- Опрос команды, угроз, лута и объектов мира разнесён по редким интервалам.
+- Мировые метки рисуются только при удержании Alt и ограничены тремя ближайшими целями.
+- При скрытом HUD анализ полностью приостанавливается; полный совет обновляется раз в 1,2 секунды.
+
+0.14.0 (2026-10-12)
+- Все доступные предметы установленной игры получают live-профиль по ItemDef
+  tags; точные правила сохраняют приоритет, неизвестные формулы честно помечены.
+- Добавлен what-if предпросмотр прироста полос для планов, Command, магазинов и
+  найденного лута, плюс мировые метки над уже раскрытыми вариантами.
+- Появились DNA билда, поиск незавершённой синергии, предупреждение о перекачке,
+  оценка соответствия лута, общий маршрут для любого персонажа и роли команды.
+- Советник распознаёт ближайшие принтеры, утилизаторы и лунные котлы, предлагает
+  кандидата на лом и предупреждает о потере последнего источника категории.
+- Добавлены прогноз следующего этапа, оценка запуска телепортера, радар главной
+  видимой угрозы, командный пробел и опциональный адаптивный стиль риска.
+- Видимый предмет можно пометить локальным резервом; отметка появляется в мире
+  и во вкладке команды без отправки пользовательских сетевых сообщений.
+- Вкладка «Забег» строит график развития, записывает последний смертельный удар
+  и локальный автоотчёт. На хосте также суммируются нанесённый урон и максимум.
+
+0.13.0 (2026-10-12)
+- Добавлены пять контекстных полос: первый удар, темп урона, переживание
+  сильного удара, устойчивость в долгом бою и зачистка толпы.
+- Советник различает исследование, толпу, активный телепортер и босса; AoE,
+  защита и boss damage получают приоритет только в подходящем контексте.
+- Линейно стакающиеся эффекты показывают предельную относительную пользу и
+  статус «сильный стак / ещё выгодно / слабая отдача / предел».
+- План явно разделён на «сейчас» и «потом». Командная вкладка использует новые
+  полосы при поиске самого слабого игрока и распределении AoE-предметов.
+- Добавлен локальный журнал смертей с кратким разбором самой слабой измеренной
+  стороны билда. Файл хранится в BepInEx/config/SanaBuildOverlay-history.tsv.
+
+0.12.2 (2026-10-12)
+- Рекомендации теперь учитывают live-полосы готовности: дефицит HP, защиты или
+  мобильности повышает ценность соответствующих предметов и может остановить
+  дальнейший стак чистого урона.
+- У Crowbar убран постоянный высокий приоритет. Совет показывает относительную
+  пользу следующего стака; после десятков ломов она закономерно уступает защите.
+
+0.12.1 (2026-10-12)
+- Профиль MUL-T теперь различает Auto-Nailgun (proc) и Rebar Puncher (heavy-hit).
+- Railgunner с HH44 больше не получает бесполезный совет Backup Magazine; M99
+  сохраняет ветку дополнительных зарядов и темпа перезарядки.
+- AoE и TOTAL-damage предметы получают отдельную поправку для Railgunner против
+  толпы, как рекомендует описание персонажа установленной игры.
+
+0.12.0 (2026-10-12)
+- Вкладка «Команда» показывает общий процент готовности, слабейшую категорию и
+  отдельно отмечает самого слабого живого игрока на текущем этапе.
+- Раздача доступного предмета учитывает одновременно предельную пользу следующего
+  стака, профиль героя и дефицит соответствующей полосы команды.
+- Добавлены Kjaro/Runald для heavy-hit профилей и маршрут стационарных турелей
+  Engineer с Bustling Fungus на основе механик навыков и proc-порогов.
+
+0.11.0 (2026-10-12)
+- Полосы на вкладках «План» и «Команда» теперь показывают готовность урона,
+  HP, защиты и мобильности к текущему этапу и live difficultyCoefficient.
+- Цели нормализуются относительно естественных статов конкретного героя на его
+  уровне; цвет и подпись дают быстрый статус «мало / просадка / норма / с запасом».
+- Наведение с Alt показывает исходные множители и ограничения. Неизвестные
+  сетевые или игровые данные остаются «нет данных», а не превращаются в ноль.
+
+0.10.0 (2026-10-12)
+- На вкладках «План» и «Команда» появились полосы покрытия урона, защиты,
+  мобильности и синергий; огромный стак одного предмета не изображается как
+  полностью готовый билд.
+- Добавлен переход от базового покрытия к специализации: burst-персонажи могут
+  стакать Crowbar для первого попадания, скорострельные — proc-цепочки, ближние
+  — бонус близкой дистанции. Условия и ограничения остаются в тексте совета.
+- Маршрут Railgunner теперь отдельно объясняет, почему Crowbar усиливает первый
+  выстрел, но не гарантирует ваншот любой цели.
+
+0.9.4 (2026-10-12)
+- Рекомендации Q-снаряжения теперь учитывают выбранного персонажа; Royal
+  Capacitor больше не получает одинаковый универсальный приоритет у всех.
+- Добавлены прозрачные эвристические предпочтения для 17 профилей выживших и
+  четыре проверки различающегося выбора Q.
+
+0.9.3 (2026-10-12)
+- Жёлтые Boss и VoidBoss предметы, реально лежащие рядом, теперь попадают в
+  главный совет даже без отдельного предметного правила.
+- Для такого совета показывается честная оценка по редкости без выдуманного
+  количества уже имеющихся стаков.
+
+0.9.2 (2026-10-11)
+- Исправлено периодическое исчезновение иконок предметов и Q-снаряжения:
+  загруженные Sprite сохраняются в кэше, а PickupCatalog используется как
+  мгновенный резервный источник.
+- При смене фактически доступного выбора название и изображение обновляются
+  вместе; асинхронная догрузка больше не требует переоткрывать интерфейс.
+
+0.9.1 (2026-10-11)
+- Expanded the deterministic item knowledge base from 9 to 49 rules and the
+  equipment advisor from 7 to 23 Q rules.
+- Added all 11 principal DLC4 Cursed items. Hex items stay visible and explicitly
+  unscored because their harmful effects must never be recommended as upgrades.
+- Read exact options from an open picker/Command essence instead of showing only
+  a general tier wishlist. Read money prices and mark gold affordability.
+- Added regeneration, armor multiplier, conditional armor EHP, OSP state,
+  barrier decay, buff/debuff counts and the full active artifact list.
+- Added experimental Seeker/Sojourn and Acolyte/Transcendence routes behind an
+  opt-in setting; both remain labelled HYPOTHESIS until gameplay validation.
+- Added hover tooltips, locked window position, short strategy notifications and
+  a hotkey label that follows the saved F8/F9/F10 setting.
+- Added one-time runtime catalog validation for item/equipment IDs and tiers.
+- Pure engine suite increased from 62 to 82 assertions. Production compilation
+  against 79 assemblies from the installed game passes without warnings.
+0.8.0 — 2026-10-11
+- Extract pure recommendation/math/rule components and partial UI.
+- Nine available-pool-filtered rules; per-tier next item plus alternative.
+- Correct 95% crit handling, unknown multiplier, Railgunner and Flurry cases.
+- Use selected SkillDef recharge/stock flags; exclude corrupted base items.
+- Remove arbitrary stage/difficulty score thresholds.
+- Auto Command with manual mode; retain explicit Random Loot limitations.
+- Own Addressables handles and release on teardown; cursor management.
+- Preserve previous compiled artifact on failure and dated installed backup.
+- Compile against installed DLLs: passed. Pure engine: 29 assertions passed.
+- See TESTING.md for remaining in-game visual/network verification.
+
+0.8.1 (2026-10-11)
+- Cursor is acquired only while Left Alt or Right Alt is held, in every HUD size.
+- Releasing Alt restores gameplay immediately without collapsing the large HUD.
+- IMGUI controls, scrolling and dragging are disabled outside Alt interaction mode.
+- Added four pure input-policy assertions; total engine assertions: 33.
+
+0.8.2 (2026-10-11)
+- Compact HUD selects an obtainable common goal before green/red long-term goals.
+- Red advice remains visible in the expanded per-rarity plan and is labelled long-term.
+- Added read-only current Q equipment detection and seven verified equipment rules.
+- Equipment advice reacts to safe/balanced/aggressive style and Command vs random loot.
+- Expanded plan explains whether to keep current Q equipment or consider a replacement.
+- Installed Equipment.json and live availableEquipment are used as evidence/gating.
+- Added BuildArchetype/ArchetypeMatcher lifecycle foundation with verified
+  Huntress Flurry crit and Railgunner crit-conversion strategies.
+- Pure recommendation tests increased to 48 assertions.
+
+
+0.9.0 (2026-10-11)
+- Added separate build goals and risk styles with deterministic scoring changes.
+- Added persisted Settings page: hotkey, scale, opacity, window mode and advisor options.
+- Added evidence labels to every supported item/equipment recommendation.
+- Added live nearby-loot reader for revealed terminals, printers, ground pickups
+  and Command tier essences; compact HUD now distinguishes actual choice from wishlist.
+- Added team diagnostics and deterministic recipient comparison over visible Inventory.
+- Added complete live-inventory tier ordering for Void and Hallowed Concepts:
+  Hex, Cursed, Page, FoodTier and runtime-assigned tiers.
+- Added Q equipment ranking list and goal-aware equipment scoring.
+- Kept unknown DLC effects visible but unscored instead of inventing mechanics.
+- Pure engine suite increased from 48 to 62 assertions.
+
+HISTORICAL NOTES
+0.7.0 (2026-10-11)
+- New Run tab, reading Run instance via public and reflected members.
+- Reads stageClearCount, GetRunStopwatch(), selectedDifficulty,
+  difficultyCoefficient, participatingPlayerCount and body.master.money.
+- Standard interactable-credit multiplier by participating players.
+- Explicit client/host NetworkUser and remote Inventory-component visibility
+  probe (does not claim remote stack synchronization).
+- Conservative item-coverage signals, not fake readiness percentages.
+- Safety/balance/aggression heuristics in Plan tab.
+- Stage/difficulty-based priority adjustment for two defensive/mobility items
+  (explicit heuristic thresholds; not calibrated performance claims).
+- Preserves v0.6 overlay presentation, F8 and async item icons.
+
+Build status: static source and packaging checks only; game compilation untested.
+

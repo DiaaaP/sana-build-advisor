@@ -1,0 +1,133 @@
+v0.14.3 RESPONSIVE LOOT / ICON BUILD — 2026-10-22
+
+Pure engine: PASS, 125 assertions.
+Production compile: PASS against 79 installed game assemblies (71 UnityEngine).
+Built and installed DLL SHA256: 4CC3015CE3E28A5B8103B00B1F61298830B4F68A628EFF1B133077538011E467
+Ground pickup/terminal pass: 0.30 s in LowOverhead, backed by InstanceTracker.
+Picker/airborne-droplet pass: 2 s in LowOverhead, isolated from the fast pass.
+Priority icons: current nearby/overall target every 0.20 s; remaining inventory and
+recommendation icons use a six-entry round robin. Transient failures retry after 2 s.
+Boss rewards: flying and landed pickups included; client-visible hidden ItemDefs accepted.
+Nearby what-if output is cached until the advice fingerprint changes.
+Runtime in-run verification remains required for DLC-specific pickup prefabs and visuals.
+
+v0.14.2 LOW-OVERHEAD BUILD — 2026-10-12
+
+Pure engine: PASS, 125 assertions.
+Production compile: PASS against 79 installed game assemblies (71 UnityEngine).
+Installed DLL SHA256: DC1F2BC85236C4B819DC4F6CABE6FE6A80B5A375BFFC6B26FCE935BDA73ECF4C
+Built and installed DLL hashes: identical.
+Default LowOverhead mode: event-driven recommendation rebuilds; inventory 2 s;
+skills 5 s; team/threat/loot scans and damage telemetry only while inspecting
+the relevant expanded page with Alt. Hidden HUD still performs no analysis.
+
+v0.14.1 PERFORMANCE BUILD — 2026-10-12
+
+Pure engine: PASS, 125 assertions.
+Production compile: PASS against 79 installed game assemblies (71 UnityEngine).
+Installed DLL SHA256: 10A78055661BE823B7D00DF037896DAAB3465A1EEB843887EBC00FB87247AA39
+Built and installed DLL hashes: identical.
+Performance changes: 0.60 s main refresh, 1.25 s nearby loot refresh,
+1.5 s threat refresh, 3 s team/facility refresh, top-12 what-if budget,
+no duplicate nearby/team simulations, world markers only while Alt is held.
+Hidden HUD performs no run analysis; full recommendations refresh every 1.2 s.
+
+v0.14.0 DECISION TOOLS BUILD — 2026-10-12
+Pure engine: 125 assertions passed. Production compilation against 79 installed
+assemblies passed. Read-only audit found no item/stat/network mutation calls.
+Built and installed SHA256 match:
+9F40BD82D433E7B7E02165D508C64C581C14DCE4A0CE09BF81859BFC59941E5A
+Added live ItemCatalog fallback profiles, what-if deltas, world markers, build DNA,
+team roles/gaps, exchange advice, threat radar, next-stage forecast, host damage
+telemetry, run trend and local reports. Runtime/UI scenarios remain in TESTING.md.
+
+v0.13.0 ADAPTIVE ADVISOR BUILD — 2026-10-12
+Pure engine: 117 assertions passed. Production compilation against 79 installed
+assemblies passed. Added encounter-aware first-hit, damage-tempo, burst-survival,
+sustain and clear models; marginal stack guidance; team threat bars; local death
+review persistence. Built and installed SHA256 match:
+30B0861422296D9420706322D7D47B8CDE1E64DA1C714444607FF542105A89A6
+The new in-run layout, encounter detection and death transition still require the
+manual smoke scenarios in TESTING.md; compilation is not recorded as runtime proof.
+
+2026-10-11, installed game validation
+
+Compiler: C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe
+Production sources: all root *.cs (tests excluded).
+Dependencies: installed BepInEx, RoR2, HGUnityUtils, HLAPI,
+UnityEngine modules, Unity.Addressables, Unity.ResourceManager,
+netstandard and System.Runtime when present.
+Compilation: success, no compiler warnings. Exact build.ps1 reference set also
+compiled successfully via direct compiler invocation. Script syntax: passed.
+Unsigned build.ps1 execution was rejected by PowerShell. No policy changed.
+Pure engine: 29 passing assertions. Test source: tests/EngineTests.cs.
+
+Installed DLL SHA256:
+E8D61237A1EBDBCCE2845CA7663EE63A2FA74DE051DBA0796FFEB7004268E42A
+
+Steam launch at 19:31 local time. BepInEx LogOutput.log:
+[Info   :   BepInEx] Loading [Sana Build Overlay 0.8.0]
+[Info   :Sana Build Overlay] Sana Build Overlay v0.8.0 started. F8 toggles the read-only overlay.
+No Sana startup/state-refresh errors observed in this menu launch.
+The game separately logged an InvalidKeyException for a ProBuilder shader;
+this is not a successful assertion about every part of the game's startup.
+Quick Items was already installed and loaded; its files were not modified.
+
+NOT TESTED: visual layout, cursor interaction, icons during a run, actual loot
+updates, host/client synchronization, skill overrides, long-run performance.
+Acceptance scenarios and rollback: TESTING.md.
+Development scope and remaining work: DEVELOPMENT.md.
+
+v0.8.1 CURSOR HOTFIX — 2026-10-11
+Production build through build.ps1: passed without warnings.
+Pure engine and input policy: 33 assertions passed.
+Installed DLL SHA256:
+31CC959D30BA0335FBB902A8B64D2D1DAEB66804462E88BBB622CA1AB7D21A50
+Previous v0.8.0 DLL backup: SanaBuildOverlay.dll.20261011-193943.bak
+BepInEx smoke test:
+[Info   :   BepInEx] Loading [Sana Build Overlay 0.8.1]
+[Info   :Sana Build Overlay] Sana Build Overlay v0.8.1 started. Hold Alt to interact; release Alt to resume gameplay.
+No Sana exception was logged during menu startup. Actual release-Alt behavior,
+combat input pass-through and the visual state of the large HUD require the
+short manual in-run scenario at the top of TESTING.md.
+
+v0.8.2 PRACTICAL LOOT / EQUIPMENT / ARCHETYPES — 2026-10-11
+Production build through build.ps1: passed without warnings.
+Pure engines: 48 assertions passed.
+Installed DLL SHA256:
+AF8E23AD12DE6BB92F00A31E2D7E426618DAB4382D2E008FC7D8AC67AE939340
+Previous v0.8.1 DLL backup: SanaBuildOverlay.dll.20261011-195116.bak
+BepInEx smoke test:
+[Info   :   BepInEx] Loading [Sana Build Overlay 0.8.2]
+[Info   :Sana Build Overlay] Sana Build Overlay v0.8.2 started. Practical item target and Q equipment advice enabled.
+No Sana refresh/icon exception was present in the filtered startup log. Visual
+layout, live equipment changes and recommendation behavior still require the
+manual run checks in TESTING.md.
+
+v0.9.0 BUILD / INSTALL — 2026-10-11
+Pure engines: 62 assertions passed.
+Compilation against 79 installed reference assemblies: passed without warnings.
+Read-only source audit: no inventory/stat/network mutation calls found.
+Built and installed DLL SHA256 match:
+551DE9E9D86A2ABD05ABF858CC464A57ECFA2830716ACEF2204B8DB04FF0522D
+Installed backup created automatically beside the DLL.
+Distribution ZIP validated: expected documentation, source and DLL entries present.
+Runtime startup and in-run nearby-loot/UI behavior are intentionally not marked
+passed until the user starts this exact 0.9.0 build and performs TESTING.md.
+
+v0.9.1 RELEASE CANDIDATE BUILD — 2026-10-11
+Pure engine: 82 assertions passed.
+Production compilation against 79 installed reference assemblies: passed with
+no warnings. Added runtime catalog validation for 49 item rules and 23 equipment
+rules; installed 0.9.1 started and completed this validation successfully.
+Source audit found no inventory grant/removal, stat mutation or custom network
+message calls in production code. Installed 0.9.1 DLL SHA256 matches the build:
+C074F173A4BDFBB6398B3C42AED2D3BB9B6E37AF39001E3799998D56D8A62364
+Runtime log:
+[Info:BepInEx] Loading [Sana Build Overlay 0.9.1]
+[Info:Sana Build Overlay] Rule catalog check: items 49 ok, 0 missing,
+0 tier mismatch; equipment 23 ok, 0 missing.
+No Sana warning, state-refresh error or exception followed startup. In-run UI and
+multiplayer behavior remain the manual matrix in TESTING.md.
+
+
