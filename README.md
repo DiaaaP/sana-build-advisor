@@ -77,7 +77,7 @@ host and client, so team recommendations still need the multiplayer test matrix.
 If BepInEx 5 is already installed, use the smaller regular package and copy only
 `SanaBuildOverlay.dll` to `BepInEx\plugins\SanaBuildOverlay`.
 
-`Sana-RoR2-Modpack-2026.10.22-Windows-OneClick.zip` contains BepInEx and all
+`Sana-RoR2-Modpack-2026.10.22.1-Windows-OneClick.zip` contains BepInEx and all
 three Sana mods in one archive: Quick Items, Build Advisor and Risk Upgrader.
 
 Run from PowerShell without changing the machine policy:

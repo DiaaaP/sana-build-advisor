@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$bundleVersion = '2026.10.22'
+$bundleVersion = '2026.10.22.1'
 $bepInExVersion = '5.4.23.5'
 $bepInExSha256 = '82f9878551030f54657792c0740d9d51a09500eeae1fba21106b0c441e6732c4'
 $bepInExUrl = "https://github.com/BepInEx/BepInEx/releases/download/v$bepInExVersion/BepInEx_win_x64_$bepInExVersion.zip"
@@ -26,10 +26,10 @@ $mods = @(
     },
     @{
         Name = 'RiskUpgrader'
-        Version = '0.3.0'
-        Archive = 'RiskUpgrader-0.3.0.zip'
-        Url = 'https://raw.githubusercontent.com/DiaaaP/risk-upgrader/v0.3.0/packages/RiskUpgrader-0.3.0.zip'
-        Sha256 = '1ccc23ed849a71974bd593353298d9643001872439d47f594559b4db5a243363'
+        Version = '0.4.0'
+        Archive = 'RiskUpgrader-0.4.0.zip'
+        Url = 'https://raw.githubusercontent.com/DiaaaP/risk-upgrader/v0.4.0/packages/RiskUpgrader-0.4.0.zip'
+        Sha256 = 'fc351c7fc134340798ce3c52f27465696026eb0e1797d6cf81ee6abf6f63fec9'
         Dll = 'RiskUpgrader.dll'
     }
 )
@@ -92,7 +92,7 @@ SANA RISK OF RAIN 2 MODPACK $bundleVersion - БЫСТРАЯ УСТАНОВКА
 Содержимое:
 - Sana Quick Items 4.0.0 — NumPad 8
 - SANA Build Advisor 0.14.3 — F8
-- Risk Upgrader 0.3.0 — F7
+- Risk Upgrader 0.4.0 — F7, клиентские колёса в мультиплеере
 - официальный BepInEx $bepInExVersion для Windows x64
 
 Установка:
