@@ -65,15 +65,26 @@ Host/client inventory completeness needs an actual multiplayer check. Successful
 compilation does not make this a v1 release.
 
 BUILD AND INSTALL
-Required: Risk of Rain 2 with BepInEx 5.4.21.x. The helper starts automatically
-with the game; there is no separate EXE to run. Friends do not need this helper
+For the easiest Windows x64 setup, download
+`SanaBuildAdvisor-0.14.3-Windows-OneClick.zip` from `packages`, close the game,
+and extract the archive directly beside `Risk of Rain 2.exe`. It already contains
+the official BepInEx 5.4.23.5 release. Start the game normally through Steam and
+press F8; there is no separate EXE to run. Friends do not need this helper
 to join because it does not add network messages or game content. Advice and UI
 exist only on the PC that has the DLL. Remote inventory visibility can differ for
 host and client, so team recommendations still need the multiplayer test matrix.
 
+If BepInEx 5 is already installed, use the smaller regular package and copy only
+`SanaBuildOverlay.dll` to `BepInEx\plugins\SanaBuildOverlay`.
+
+`Sana-RoR2-Modpack-2026.10.22-Windows-OneClick.zip` contains BepInEx and all
+three Sana mods in one archive: Quick Items, Build Advisor and Risk Upgrader.
+
 Run from PowerShell without changing the machine policy:
   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Install
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\package-oneclick.ps1
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\package-all-in-one.ps1
 
 The installer refuses to replace the DLL while Risk of Rain 2 is running and
 creates a dated backup beside the installed DLL.
